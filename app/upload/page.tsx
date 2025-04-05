@@ -7,7 +7,7 @@ import { AuthContext } from "@/app/context/AuthContext";
 import { TextField, Button } from "@mui/material";
 
 export const Upload = () => {
-  const { isAuthenticated, token } = useContext(AuthContext);
+  const token = useContext(AuthContext);
   const router = useRouter();
 
   // Estado del formulario
@@ -54,6 +54,7 @@ export const Upload = () => {
       // Redirigir a la página de búsqueda
       router.push("/");
     } catch (err) {
+      console.log(err);
       setError("Error, el documento ya se encuentra en la base de datos.");
     }
   };

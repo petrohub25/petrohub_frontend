@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   // Cambio entre Iniciar Sesión y Registrarse
-  const handleModeChange = (_: any, newMode: "login" | "register") => {
+  const handleModeChange = (_: React.MouseEvent<HTMLElement>, newMode: "login" | "register") => {
     if (newMode) {
       setMode(newMode);
       setError(""); // Resetear errores al cambiar de modo
@@ -61,6 +61,7 @@ const Login = () => {
         setMode("login");
       }
     } catch (err) {
+      console.log(err);
       setError("Error en la autenticación. Verifica tus datos.");
     }
   };

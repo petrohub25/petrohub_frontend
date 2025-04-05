@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setIsAuthenticated(true);
       setToken(storedToken)
     }
-  }, []);
+  }, [token]);
 
   // Función para iniciar sesión
   const login = (token: string) => {
