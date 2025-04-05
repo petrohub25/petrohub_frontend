@@ -16,14 +16,6 @@ export const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
 
-  // Redirigir si el usuario no está autenticado
-//  if (!isAuthenticated) {
-  //  if (typeof window !== "undefined") {
-    //  router.push("/login");
-   // }
-   // return null;
- // }
-
   // Manejo del archivo seleccionado
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -52,7 +44,7 @@ export const Upload = () => {
       formData.append("tags", tags);
       formData.append("archivo", file);
 
-      await axios.post("http://localhost:8080/subir", formData, {
+      await axios.post("https://petrohub-backend.onrender.com/subir", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
