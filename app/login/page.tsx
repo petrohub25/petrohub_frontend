@@ -40,7 +40,7 @@ const Login = () => {
     try {
       if (mode === "login") {
         // Enviar credenciales al backend
-        const response = await axios.post("http://localhost:8080/auth/ingresar", {
+        const response = await axios.post("https://petrohub-backend.onrender.com/auth/ingresar", {
           usuario: formData.username,
           password: formData.password,
         });
@@ -51,7 +51,7 @@ const Login = () => {
         router.push("/upload");
       } else {
         // Enviar datos de registro al backend
-        await axios.post("http://localhost:8080/auth/registrar", {
+        await axios.post("https://petrohub-backend.onrender.com/auth/registrar", {
           nombreCompleto: formData.fullName,
           usuario: formData.username,
           contrasena: formData.password,
