@@ -6,7 +6,7 @@ import axios from "axios";
 import { AuthContext } from "@/app/context/AuthContext";
 import { TextField, Button } from "@mui/material";
 
-export const Upload = () => {
+const Upload = () => {
   const token = useContext(AuthContext);
   const router = useRouter();
 
