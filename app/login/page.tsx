@@ -45,6 +45,11 @@ const Login = () => {
           password: formData.password,
         });
 
+/*      const response = await axios.post("http://localhost:8080/auth/ingresar", {
+          usuario: formData.username,
+          password: formData.password,
+        });*/
+
         // Guardar token y redirigir
         login(response.data.access_token);
         console.log(response.data.access_token)
@@ -56,6 +61,12 @@ const Login = () => {
           usuario: formData.username,
           contrasena: formData.password,
         });
+
+/*        await axios.post("http://localhost:8080/auth/registrar", {
+          nombreCompleto: formData.fullName,
+          usuario: formData.username,
+          contrasena: formData.password,
+        });*/
 
         // Una vez registrado, cambiar a modo login
         setMode("login");

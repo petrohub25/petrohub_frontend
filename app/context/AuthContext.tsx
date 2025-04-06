@@ -27,23 +27,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Cargar estado de autenticación desde localStorage al iniciar
   useEffect(() => {
-    const storedToken = localStorage.getItem("authToken");
-    if (token) {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
       setIsAuthenticated(true);
       setToken(storedToken)
     }
-  }, [token]);
+  }, []);
 
   // Función para iniciar sesión
   const login = (token: string) => {
-    localStorage.setItem("token", token);
-    setIsAuthenticated(true);
     setToken(token);
+    setIsAuthenticated(true);
+    localStorage.setItem("token", token);
   };
 
   // Función para cerrar sesión
   const logout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
     setToken(null);
     router.push("/");

@@ -37,6 +37,12 @@ const Upload = () => {
       setError("El archivo excede el tamaño de 50 MB.");
       return;
     }
+          
+    if (token != null) {
+      console.log(token)
+    } else {
+      console.log("La token es null")
+    }
 
     try {
       const formData = new FormData();
@@ -44,12 +50,19 @@ const Upload = () => {
       formData.append("tags", tags);
       formData.append("archivo", file);
 
+
+      const headers = {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token.token}`
+      }
+
       await axios.post("https://petrohub-backend.onrender.com/subir", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-         },
+        headers: headers,
       });
+
+/*      await axios.post("http://localhost:8080/subir", formData, {
+        headers: headers,
+      });*/
 
       // Redirigir a la página de búsqueda
       router.push("/");
