@@ -25,8 +25,10 @@ const Home = () => {
       let response;
       if (title == "" && tags == "") {
         response = await axios.get(`https://petrohub-backend.onrender.com/?page=${page - 1}&size=9`);  
+        //response = await axios.get(`http://localhost:8080/?page=${page - 1}&size=9`);  
       } else {
-        response = await axios.get(`https://petrohub-backend.onrender.com/buscar?${query}&page=${page - 1}&size=9`);
+        response = await axios.get(`https://petrohub-backend.onrender.com?${query}&page=${page - 1}&size=9`);
+        //response = await axios.get(`http://localhost:8080/buscar?${query}&page=${page - 1}&size=9`);
       }
       setDocuments(response.data.content);
       setTotalPages(response.data.totalPages);
@@ -91,7 +93,7 @@ const Home = () => {
                 <li key={doc.documentoId} className="border-b p-2 last:border-none">
                   <p className="font-bold text-white">{doc.titulo}</p>
                   <p className="text-gray-400">Etiquetas: {doc.etiquetas}</p>
-                  <a href={`https://petrohub-backend.onrender.com/documentos/${doc.titulo}`} className="text-[#16f0a4] hover:underline">
+                  <a href={`${doc.path}`} className="text-[#16f0a4] hover:underline">
                     Ver Documento
                   </a>
                 </li>
